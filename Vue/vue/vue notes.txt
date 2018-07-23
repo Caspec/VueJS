@@ -1,0 +1,13 @@
+$ npm install -g vue-cli
+$ vue init webpack-simple my-project
+$ cd my-project
+$ npm install
+$ npm run dev
+
+npm run dev <- start server
+npm run build <- build for production
+npm install <- install node_modules ' ish
+
+You got events ($emit ) to pass data from CHILD => PARENT.
+
+And if you got two sibling components which you need to communicate with each other: You can use an event bus to pass data from SIBLING => SIBLING.

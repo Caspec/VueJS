@@ -1,0 +1,50 @@
+#effect {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.highlight {
+  background-color: red;
+  width: 200px !important;
+}
+
+.shrink {
+  background-color: gray;
+  width: 50px !important;
+}
+
+.demo {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	display: inline-block;
+	margin: 10px;
+}
+
+.gray {
+	background-color: gray;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.dimensions {
+  height: 90px !important;
+  line-height: 90px !important;
+  text-align: center;
+}
+
+.bgColor {
+  background-color: olive;
+}
+
+.class-b {
+	background-color: blue;
+}
+
+.class-a {
+	background-color: orange;
+}
+

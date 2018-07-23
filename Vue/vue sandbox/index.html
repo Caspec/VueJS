@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue sandbox</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    
+    <div id="app">
+        <input v-model="message" /><br />
+        {{ message }}
+       
+        <ul>
+            <li v-for="food in food_item">{{ food }}</li>
+        </ul>
+		
+		<ul>
+			<li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }}) </li>
+		</ul>
+		
+		<hr>
+		<ul>
+			<li v-for="person in persons">
+			<div v-for="(value, key, index) in person">{{ key }}: {{ value }}: {{ index }}</div>
+			</li>
+		</ul>
+		<hr>
+		
+		<span v-for="n in 10">{{ n }}</span>
+		
+		<button @click="ingredients.push('spices')">Add New</button>
+		
+		<template v-for="(ingredient, i) in ingredients">
+			<h1>{{ ingredient }}</h1>
+			<p>({{ i }})</p>
+		</template>
+		
+        <button v-on:click="me">Click me</button>
+		<p>{{ t() }}</p> - <a v-bind:href="link">Heroin link</a>
+		<h1 v-once>{{ t() }}</h1>
+		<p v-html="finishedLink"></p>
+		<button v-on:click="inc(2, $event)">Click me!</button>
+		<button v-on:click="counter++">Click me!</button>
+		<p>{{ counter }}</p>
+		<p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }} - <span v-on:mousemove="dummy">DEAD SPOT</span></p>
+		<input type="text" v-on:keyup.enter.space="alertMe">
+		<div class="dimensions" :class="{bgColor:isBgColor}"><br /><br />
+		<div class="dimensions" :class="[classB, classA]"><br />
+		<p v-if="show">See me</p>
+		<p v-else>Now you see me!</p>
+		<template v-if="show">
+		<h1>heading inside</h1>
+		<p>inside template</p>
+		</template>
+		<p v-show="show">Dont see me</p>
+		<button @click="show = !show">Switch</button>
+    </div>
+
+
+    <script>
+    
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            food_item: ['Ris', 'Pasta', 'Okse'],
+			link: 'http://www.google.dk',
+			finishedLink: '<a href="http://www.google.dk">Google</a>',
+			counter: 0,
+			x: 0,
+			y: 0,
+			isBgColor: true,
+			classB: 'class-b',
+			classA: 'class-a',
+			show: true,
+			ingredients: ['meat', 'fruit', 'cookies'],
+			persons: [{name: 'Max', age: 27, color: 'red'},
+					  {name: 'Anna', age: 'unknown', color: 'blue'}
+					]
+			
+    },
+    methods: {
+        me: function(){
+            alert('Hej med dig!');
+        },
+		t: function(){
+			return this.message;
+		},
+		inc: function(step, event){
+			this.counter += step;
+		},
+		updateCoordinates: function(event){
+			this.x = event.clientX;
+			this.y = event.clientY;
+		},
+		dummy: function(event){
+			event.stopPropagation();
+		},
+		alertMe: function(){
+			alert('Alert!')
+		}
+    }
+});
+
+    </script>
+
+</body>
+</html>
